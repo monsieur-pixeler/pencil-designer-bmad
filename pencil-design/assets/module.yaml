@@ -1,0 +1,9 @@
+code: pda
+name: "Pencil Design Agent"
+description: "Autonomous visual designer for Pencil.dev canvas — designs screens, manages design systems, and bridges specs to code"
+module_version: 2.0.0
+default_selected: false
+module_greeting: >
+  Pencil is ready. Design intent goes in — pixel-perfect screens come out.
+  Invoke with /pencil-design or ask for Pencil in Party Mode.
+  Run setup again at any time to reconfigure.

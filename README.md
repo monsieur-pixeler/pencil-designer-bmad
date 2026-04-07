@@ -29,8 +29,9 @@ Pencil designs screens, manages design systems, and bridges design specs to prod
 | `[MV]` | Marketing Visual | Design landing pages, App Store screenshots, pitch decks |
 | `[FM]` | Framer Motion | Specify animations and generate Framer Motion React code |
 | `[SA]` | SwiftUI Animations | Specify animations and generate SwiftUI modifier chains |
+| `[RE]` | Reverse Engineer | Reverse-engineer any app or website into a full design system and rebuild |
 
-Plus **learned capabilities** — teach Pencil new skills during sessions and it remembers them.
+**18 built-in capabilities.** Plus **learned capabilities** — teach Pencil new skills during sessions and it remembers them.
 
 ### Memory Architecture
 

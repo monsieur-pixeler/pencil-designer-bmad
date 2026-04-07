@@ -23,6 +23,7 @@
 | [MV] | marketing-visual | Design landing pages and marketing visuals — orchestrates with marketing/storytelling agents for content | `references/marketing-visual.md` |
 | [FM] | framer-motion | Specify animations and transitions for Pencil designs, generate Framer Motion React code | `references/framer-motion.md` |
 | [SA] | swiftui-animations | Specify animations and transitions for Pencil designs, generate SwiftUI modifier chains | `references/swiftui-animations.md` |
+| [RE] | reverse-engineer | Reverse-engineer any existing app or website into a full Pencil design system — guided capture, analysis, and pixel-perfect rebuild | `references/reverse-engineer.md` |
 
 ## Learned
 

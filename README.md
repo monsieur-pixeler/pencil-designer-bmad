@@ -63,34 +63,37 @@ All scripts include unit tests in `scripts/tests/`.
 
 ## Installation
 
-### Option A: As a Claude Code skill (standalone)
+### Quick Install (one command)
 
-Copy the skill into your project's `.claude/skills/` directory:
+From your project root:
 
 ```bash
-cp -r pencil-design /path/to/your-project/.claude/skills/pencil-design
+curl -fsSL https://raw.githubusercontent.com/monsieur-pixeler/pencil-designer-bmad/main/install.sh | bash
 ```
 
-Then invoke Pencil in any Claude Code session:
+This copies the skill into `.claude/skills/pencil-design/` and you're ready to go.
+
+### Manual Install
+
+```bash
+git clone https://github.com/monsieur-pixeler/pencil-designer-bmad.git /tmp/pencil-designer-bmad
+cp -r /tmp/pencil-designer-bmad/pencil-design /path/to/your-project/.claude/skills/pencil-design
+```
+
+### BMad Module Registration (optional)
+
+If your project uses the BMad Method with `_bmad/` configuration, run after installing:
 
 ```
 /pencil-design setup
 ```
 
-This registers Pencil in your project and starts the First Breath onboarding.
-
-### Option B: As a BMad Module
-
-If your project uses the BMad Method with `_bmad/` configuration:
-
-```
-/pencil-design setup
-```
-
-This runs the full BMad module registration:
+This registers Pencil as a BMad module:
 - Writes module config to `_bmad/config.yaml` and `config.user.yaml`
 - Registers capabilities in `_bmad/module-help.csv`
 - Creates output directories
+
+Without BMad, Pencil works fine as a standalone Claude Code skill — just skip this step.
 
 ### After Installation
 

@@ -6,6 +6,7 @@
 
 | Code | Name | Description | Source |
 |------|------|-------------|--------|
+| [MAP] | app-map | Generate a complete visual screen map of your entire app — inventory, flow grid, navigation connections, gap analysis | `references/app-map.md` |
 | [DP] | pencil-patterns | Design screens, components, and iterate on existing designs in Pencil canvas | `references/pencil-patterns.md` |
 | [PW] | wireframe-to-visual | Transform Freya's wireframes into polished visual designs in the same .pen file | `references/wireframe-to-visual.md` |
 | [WS] | wds-integration | Batch-generate all screens from WDS scenario specs and trigger maps, optionally skipping the wireframe phase | `references/wds-integration.md` |
@@ -34,17 +35,40 @@ _Capabilities added by the owner over time. Prompts live in `capabilities/`._
 
 ## Capability Selection Guide
 
-When multiple capabilities could apply, use this order:
+### Design Phases
+
+Capabilities are grouped into phases. You don't have to follow them in order — jump to wherever you need. But for a new project, this is the natural flow:
+
+```
+Discover → Foundation → Map → Create → Refine → Validate → Deliver
+                                                              ↑
+                                                    Maintain (always)
+```
+
+| Phase | When | Capabilities |
+|---|---|---|
+| **Discover** | Understanding what exists | `[RE]` reverse-engineer, `[ID]` import-design |
+| **Foundation** | Setting up the design system | Design tokens, DESIGN.md (part of First Breath or [DP]) |
+| **Map** | Planning the whole app | `[MAP]` app-map |
+| **Create** | Building screens | `[DP]` design, `[PW]` wireframe→visual, `[WS]` from WDS specs, `[MV]` marketing |
+| **Refine** | Variants and animations | `[TV]` themes, `[MP]` multi-platform, `[AN]` animate |
+| **Validate** | Quality checks | `[AC]` accessibility, `[AA]` audit, `[DD]` diff, `[CH]` component harvest |
+| **Deliver** | Handoff to development | `[GC]` code generation, `[DH]` handoff + docs |
+| **Maintain** | Ongoing health | `[SH]` design system health (Pulse) |
+
+### Quick Routing
 
 | Situation | Start with |
 |---|---|
-| Creating new screens or components | `[DP]` pencil-patterns |
+| Starting a new app | `[MAP]` app-map → see all screens before designing any |
+| Creating screens or components | `[DP]` pencil-patterns |
 | Polishing Freya wireframes | `[PW]` wireframe-to-visual |
-| Generating all screens from WDS specs | `[WS]` wds-integration |
-| Checking token drift or system violations | `[SH]` design-system-health |
-| Auditing existing screens for inconsistencies | `[AA]` app-audit |
-| Analyzing an unknown .pen file for the first time | `[ID]` import-design |
-| Exporting or documenting for developers | `[DH]` design-handoff |
+| Generating screens from WDS specs | `[WS]` wds-integration |
+| Reverse-engineering an existing app | `[RE]` reverse-engineer |
+| Analyzing an existing .pen file | `[ID]` import-design |
+| Design is a mess — need cleanup | `[ID]` analyse → `[MAP]` reorganize → `[AA]` audit |
+| Checking token drift | `[SH]` design-system-health |
+| Exporting for developers | `[DH]` design-handoff |
 
 **[ID] vs [AA] vs [SH] — when to use which:**
 - `[ID]` — first analysis of an unfamiliar file; extracts what's there and names it

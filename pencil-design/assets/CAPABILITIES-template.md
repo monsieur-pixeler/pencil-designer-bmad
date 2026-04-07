@@ -20,11 +20,18 @@
 | [DD] | design-diff | Compare two versions of a screen and show exactly what changed | `references/design-diff.md` |
 | [AC] | accessibility-check | WCAG audit on Pencil designs before code — contrast, touch targets, readability | `references/accessibility-check.md` |
 | [SH] | design-system-health | Automated health check comparing design tokens with code tokens, measuring component reuse, detecting drift | `references/design-system-health.md` |
-| [RP] | responsive-preview | Preview a screen at multiple device sizes to verify responsive behavior | `references/responsive-preview.md` |
+| [DS] | design-system-setup | Interactively set up, import, or consolidate a design system — tokens, palette, typography, DESIGN.md | `references/design-system-setup.md` |
 | [MV] | marketing-visual | Design landing pages and marketing visuals — orchestrates with marketing/storytelling agents for content | `references/marketing-visual.md` |
-| [FM] | framer-motion | Specify animations and transitions for Pencil designs, generate Framer Motion React code | `references/framer-motion.md` |
-| [SA] | swiftui-animations | Specify animations and transitions for Pencil designs, generate SwiftUI modifier chains | `references/swiftui-animations.md` |
+| [AN] | animate | Specify animations and transitions — auto-detects framework (SwiftUI or Framer Motion) from BOND.md | `references/animate.md` |
 | [RE] | reverse-engineer | Reverse-engineer any existing app or website into a full Pencil design system — guided capture, analysis, and pixel-perfect rebuild | `references/reverse-engineer.md` |
+
+### Legacy Aliases (still work, redirect to merged capabilities)
+
+| Legacy Code | Redirects To | Mode |
+|---|---|---|
+| [FM] | [AN] Animate | Framer Motion — loads `references/animate-framer-motion.md` |
+| [SA] | [AN] Animate | SwiftUI — loads `references/animate-swiftui.md` |
+| [RP] | [MP] Multi-Platform | Preview mode — quick size check without recomposition |
 
 ## Learned
 
@@ -48,7 +55,7 @@ Discover → Foundation → Map → Create → Refine → Validate → Deliver
 | Phase | When | Capabilities |
 |---|---|---|
 | **Discover** | Understanding what exists | `[RE]` reverse-engineer, `[ID]` import-design |
-| **Foundation** | Setting up the design system | Design tokens, DESIGN.md (part of First Breath or [DP]) |
+| **Foundation** | Setting up the design system | `[DS]` design-system-setup |
 | **Map** | Planning the whole app | `[MAP]` app-map |
 | **Create** | Building screens | `[DP]` design, `[PW]` wireframe→visual, `[WS]` from WDS specs, `[MV]` marketing |
 | **Refine** | Variants and animations | `[TV]` themes, `[MP]` multi-platform, `[AN]` animate |

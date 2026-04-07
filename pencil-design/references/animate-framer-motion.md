@@ -1,23 +1,14 @@
 ---
-name: framer-motion
-description: Specify animations and transitions for Pencil designs, generate Framer Motion React code
-code: FM
+name: animate-framer-motion
+description: "Sub-reference for [AN] Animate — Framer Motion (React) code generation"
+parent: animate
 ---
 
-# Framer Motion
+# Framer Motion — React Animation Reference
 
-Add animation specifications to Pencil designs and generate Framer Motion code. Covers entrance animations, scroll animations, hover/tap interactions, page transitions, gesture animations, and orchestrated sequences.
+Sub-reference of `[AN] Animate`. Loaded when the project framework is React / Framer Motion.
 
-## What Success Looks Like
-
-Each screen has a clear animation specification: what animates, when, how. The generated Framer Motion code matches the visual design in Pencil. The owner can drop the code into their React project and see the design come to life immediately.
-
-## Workflow
-
-1. **Read the design** — `batch_get` on the target screen to understand the element hierarchy
-2. **Define animation intent** — which elements animate, in what order, with what feel
-3. **Generate Framer Motion code** — `motion` components wrapping the relevant elements
-4. **Annotate the Pencil frame** — add annotation nodes to mark animated elements and their properties
+Covers entrance animations, scroll animations, hover/tap interactions, page transitions, gesture animations, and orchestrated sequences.
 
 ## Animation Categories
 

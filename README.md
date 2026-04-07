@@ -8,30 +8,53 @@ Pencil is a BMad Method agent that turns design intent into pixel-perfect visual
 
 Pencil designs screens, manages design systems, and bridges design specs to production code. It works inside Pencil.dev via MCP tools — reading, creating, and modifying design nodes directly on the canvas.
 
-### 17 Built-in Capabilities
+### Design Phases
 
-| Code | Capability | What It Does |
-|------|-----------|-------------|
-| `[DP]` | Design & Polish | Design screens, components, iterate on existing designs |
-| `[PW]` | Wireframe to Visual | Transform wireframes into polished visual designs |
-| `[WS]` | WDS Integration | Batch-generate screens from WDS scenario specs |
-| `[GC]` | Design to Code | Generate SwiftUI/React/HTML from designs (or reverse) |
-| `[TV]` | Theme Variants | Generate light/dark mode and alternative color schemes |
-| `[MP]` | Multi-Platform | Recompose mobile designs for iPad, macOS, and web |
-| `[ID]` | Import Design | Analyze existing designs to extract patterns and tokens |
-| `[CH]` | Component Harvest | Extract reusable components from recurring patterns |
-| `[DH]` | Design Handoff | Export screens and generate component documentation |
-| `[AA]` | App Audit | Scan screens for design inconsistencies and token drift |
-| `[DD]` | Design Diff | Compare two versions of a screen with structural diff |
-| `[AC]` | Accessibility Check | WCAG and iOS/HIG audit — contrast, touch targets, safe areas |
-| `[SH]` | Design System Health | Automated health check comparing design tokens with code |
-| `[RP]` | Responsive Preview | Preview screens at multiple device sizes |
-| `[MV]` | Marketing Visual | Design landing pages, App Store screenshots, pitch decks |
-| `[FM]` | Framer Motion | Specify animations and generate Framer Motion React code |
-| `[SA]` | SwiftUI Animations | Specify animations and generate SwiftUI modifier chains |
-| `[RE]` | Reverse Engineer | Reverse-engineer any app or website into a full design system and rebuild |
+Capabilities are organized into a guided design journey. Jump to wherever you need — phases are navigation, not a waterfall:
 
-**18 built-in capabilities.** Plus **learned capabilities** — teach Pencil new skills during sessions and it remembers them.
+```
+Discover → Foundation → Map → Create → Refine → Validate → Deliver
+                                                              ↑
+                                                    Maintain (always)
+```
+
+### 15 Capabilities across 7 Phases
+
+| Phase | Code | Capability | What It Does |
+|-------|------|-----------|-------------|
+| **Discover** | `[RE]` | Reverse Engineer | Reverse-engineer any app or website — capture, analyze, rebuild or reskin |
+| | `[ID]` | Import Design | Analyze existing .pen files for tokens, patterns, and component opportunities |
+| **Foundation** | `[DS]` | Design System Setup | Set up, import, or consolidate tokens — palette, typography, spacing, DESIGN.md |
+| **Map** | `[MAP]` | App Map | Map your entire app on one canvas — screen inventory, flow grid, gap analysis |
+| **Create** | `[DP]` | Design & Polish | Design screens, components, iterate on existing designs |
+| | `[PW]` | Wireframe to Visual | Transform wireframes into polished visual designs |
+| | `[WS]` | WDS Integration | Batch-generate screens from WDS scenario specs |
+| | `[MV]` | Marketing Visual | Design landing pages, App Store screenshots, pitch decks |
+| **Refine** | `[TV]` | Theme Variants | Generate light/dark mode and alternative color schemes |
+| | `[MP]` | Multi-Platform | Recompose for iPad/macOS/web + preview mode for quick size checks |
+| | `[AN]` | Animate | Specify animations — auto-detects SwiftUI or Framer Motion from project config |
+| **Validate** | `[AC]` | Accessibility Check | WCAG and iOS/HIG audit — contrast, touch targets, safe areas |
+| | `[AA]` | App Audit | Scan screens for design inconsistencies and token drift |
+| | `[DD]` | Design Diff | Compare two versions of a screen with structural diff |
+| | `[CH]` | Component Harvest | Extract reusable components from recurring patterns |
+| **Deliver** | `[GC]` | Design to Code | Generate SwiftUI/React/HTML from designs (or reverse) |
+| | `[DH]` | Design Handoff | Export screens and generate component documentation |
+| **Maintain** | `[SH]` | Design System Health | Automated token drift detection, runs in Pulse (headless) |
+
+Plus **learned capabilities** — teach Pencil new skills during sessions and it remembers them.
+
+### Smart Intake
+
+Pencil detects what you need based on your intent:
+
+| You say... | Pencil does... |
+|---|---|
+| "New app, starting fresh" | Checks for WDS specs → suggests Freya or starts [MAP] |
+| "Reverse engineer this app" | [RE] with clone, reskin, or pattern library mode |
+| "Switching from React to SwiftUI" | [RE] discover → [DS] rebuild tokens → [MAP] or Create |
+| "My design is a mess" | [ID] analyze → [DS] cleanup → [MAP] reorganize → [AA] audit |
+| "Design the settings screen" | Straight to [DP] — no routing overhead |
+| `[AC]` or any capability code | Direct access, always works |
 
 ### Memory Architecture
 
@@ -111,12 +134,16 @@ After First Breath, every future session starts with Pencil reading its sanctum 
 ### Interactive
 
 ```
+"Map my entire app"
 "Design the dashboard screen"
+"Reverse engineer strongapp.com and reskin it with my brand"
 "Polish this wireframe into a visual design"
 "Generate SwiftUI code from the Settings screen"
 "Run an accessibility check on all screens"
 "Create light and dark theme variants"
 "How does this look on iPad?"
+"Animate the dashboard — fade up with stagger"
+"My design is spaghetti — help me clean up"
 ```
 
 ### Headless (Pulse)
@@ -135,35 +162,41 @@ claude --skill pencil-design --headless -- "export"
 
 ```
 pencil-design/
-  SKILL.md                    # Bootloader — identity seed, activation routing
+  SKILL.md                         # Bootloader — identity, intake router, activation
   assets/
-    PERSONA-template.md       # Communication style and personality seed
-    CREED-template.md         # Core values, standing orders, boundaries
-    BOND-template.md          # Owner relationship — filled during First Breath
-    MEMORY-template.md        # Long-term memory — starts empty, grows over time
-    CAPABILITIES-template.md  # Capability routing table
-    PULSE-template.md         # Headless mode task definitions
-    INDEX-template.md         # File index — anti-orphan discipline
-    module.yaml               # BMad module metadata
-    module-setup.md           # BMad registration workflow
-    module-help.csv           # Help system entries
+    PERSONA-template.md            # Communication style and personality seed
+    CREED-template.md              # Core values, standing orders, boundaries
+    BOND-template.md               # Owner relationship — filled during First Breath
+    MEMORY-template.md             # Long-term memory — grows over time
+    CAPABILITIES-template.md       # Phase-based capability routing table
+    PULSE-template.md              # Headless mode task definitions
+    INDEX-template.md              # File index — anti-orphan discipline
+    module.yaml                    # BMad module metadata
+    module-setup.md                # BMad registration workflow
   references/
-    first-breath.md           # Onboarding conversation guide
-    memory-guidance.md        # Memory write discipline and [ALERT] conventions
-    capability-authoring.md   # Framework for creating learned capabilities
-    pencil-patterns.md        # [DP] Core design capability
-    ... (17 capability files)
+    first-breath.md                # Onboarding conversation guide
+    memory-guidance.md             # Memory discipline and [ALERT] conventions
+    capability-authoring.md        # Framework for creating learned capabilities
+    app-map.md                     # [MAP] App Map
+    pencil-patterns.md             # [DP] Core design
+    design-system-setup.md         # [DS] Foundation
+    animate.md                     # [AN] Animate (router)
+    animate-framer-motion.md       # [AN] Framer Motion sub-reference
+    animate-swiftui.md             # [AN] SwiftUI sub-reference
+    multi-platform.md              # [MP] Multi-Platform + preview mode
+    reverse-engineer.md            # [RE] Reverse Engineer + reskin
+    ... (12 more capability files)
   scripts/
-    init-sanctum.py           # First Breath scaffolding
-    contrast-ratio.py         # WCAG contrast calculator
-    scan-hardcoded-values.py  # Source code token violation scanner
-    diff-tokens.py            # Design ↔ code token comparison
-    diff-nodes.py             # Node tree structural differ
-    classify-token-drift.py   # Token classification engine
-    aggregate-patterns.py     # Pattern count aggregator
-    merge-config.py           # BMad config writer
-    merge-help-csv.py         # BMad help system writer
-    tests/                    # Unit tests (71 tests)
+    init-sanctum.py                # First Breath scaffolding
+    contrast-ratio.py              # WCAG contrast calculator
+    scan-hardcoded-values.py       # Source code token violation scanner
+    diff-tokens.py                 # Design ↔ code token comparison
+    diff-nodes.py                  # Node tree structural differ
+    classify-token-drift.py        # Token classification engine
+    aggregate-patterns.py          # Pattern count aggregator
+    merge-config.py                # BMad config writer
+    merge-help-csv.py              # BMad help system writer
+    tests/                         # Unit tests (71 tests)
 ```
 
 ## Design Philosophy

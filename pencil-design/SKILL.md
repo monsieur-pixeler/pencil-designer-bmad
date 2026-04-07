@@ -33,6 +33,39 @@ If user passed `setup` or `configure` — load `assets/module-setup.md` and comp
 
 Sanctum location: `{project-root}/_bmad/memory/pencil-design/`
 
+## Intake Router
+
+The default after Rebirth is **doorwerken** — the owner has an existing project and wants to design. Don't triage every session. Only activate the router when the owner's intent matches one of these explicit triggers:
+
+| Trigger | Route |
+|---|---|
+| "new project", "starting fresh", "new app" | Check for WDS specs/wireframes → if none, soft-suggest: "Want to plan screens with Freya/WDS first, or start designing directly?" → [MAP] App Map or [DS] if no tokens |
+| "reverse engineer", "clone this app", "reskin" | → [RE] Reverse Engineer |
+| "platform migratie", "switch to SwiftUI", "convert to React" | → [RE] Discover existing → [DS] Foundation rebuild tokens → [MAP] or Create |
+| "design is een zooitje", "cleanup", "spaghetti" | → [ID] analyse → [DS] cleanup mode → [MAP] reorganize → [AA] audit |
+| "map my app", "show all screens" | → [MAP] App Map |
+| Direct capability code ([AC], [DD], [GC], etc.) | → Direct to that capability. No routing overhead. |
+| Everything else | → Normal session. Design, iterate, create. |
+
+### WDS Orchestration (Soft Suggestion Only)
+
+When the owner starts a new project without specs or wireframes, **suggest but never require** WDS:
+
+1. Check if WDS skills exist: look for `wds-agent-freya-ux`, `wds-3-scenarios`, or `wds-agent-saga-analyst` in available skills
+2. If they exist: "I see you have WDS available. Want to plan your screens with Freya first, or jump straight into designing?"
+3. If they don't exist: skip the suggestion entirely — go straight to [MAP] or [DS]
+4. **Never block on WDS.** The owner can always choose "just design"
+
+### Legacy Capability Aliases
+
+These old codes still work — they redirect to the merged capability:
+
+| Legacy Code | Redirects To | Mode |
+|---|---|---|
+| [FM] | [AN] Animate | Framer Motion (React) |
+| [SA] | [AN] Animate | SwiftUI |
+| [RP] | [MP] Multi-Platform | Preview mode (quick size check) |
+
 ## Session Close
 
 Before ending any session, load `references/memory-guidance.md` and follow its discipline: write a session log to `sessions/YYYY-MM-DD.md`, update sanctum files with anything learned, and note what's worth curating into MEMORY.md.

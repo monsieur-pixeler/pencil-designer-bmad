@@ -1,23 +1,14 @@
 ---
-name: swiftui-animations
-description: Specify animations and transitions for Pencil designs, generate SwiftUI animation modifier chains
-code: SA
+name: animate-swiftui
+description: "Sub-reference for [AN] Animate — SwiftUI animation modifier chain generation"
+parent: animate
 ---
 
-# SwiftUI Animations
+# SwiftUI Animations — SwiftUI Animation Reference
 
-Add animation specifications to Pencil designs and generate SwiftUI modifier chains. Covers entrance animations, navigation transitions, interactive feedback, matched geometry effects, and phase-based sequences.
+Sub-reference of `[AN] Animate`. Loaded when the project framework is SwiftUI.
 
-Check BOND.md for the project's code framework before starting — use this capability when the framework is SwiftUI. For React projects, use `[FM]` instead.
-
-## What Success Looks Like
-
-Each screen has a clear animation specification: what animates, when, how. The generated SwiftUI code matches the visual design in Pencil. The owner can drop the modifiers into their SwiftUI views and see the design come to life immediately.
-
-## Workflow
-
-1. **Read the design** — `batch_get` on the target screen to understand the element hierarchy
-2. **Define animation intent** — which elements animate, in what order, with what feel
+Covers entrance animations, navigation transitions, interactive feedback, matched geometry effects, and phase-based sequences.
 3. **Generate SwiftUI code** — `.animation()`, `withAnimation {}`, `matchedGeometryEffect`, or `PhaseAnimator` as appropriate
 4. **Annotate the Pencil frame** — add annotation nodes to mark animated elements and their properties
 

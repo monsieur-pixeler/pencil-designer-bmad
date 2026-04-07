@@ -18,3 +18,9 @@ Thumbs.db
 
 # Sanctum (generated per-project, never committed)
 _bmad/memory/
+.agents/
+.claude/
+_bmad/
+_bmad-output/
+design-artifacts/
+docs/

@@ -24,6 +24,7 @@
 | [MV] | marketing-visual | Design landing pages and marketing visuals — orchestrates with marketing/storytelling agents for content | `references/marketing-visual.md` |
 | [AN] | animate | Specify animations and transitions — auto-detects framework (SwiftUI or Framer Motion) from BOND.md | `references/animate.md` |
 | [RE] | reverse-engineer | Reverse-engineer any existing app or website into a full Pencil design system — guided capture, analysis, and pixel-perfect rebuild | `references/reverse-engineer.md` |
+| [QB] | quick-bootstrap | Full pipeline bootstrap — from nothing or brownfield to all screens on canvas in 5 minutes, orchestrating available agents | `references/quick-bootstrap.md` |
 
 ### Legacy Aliases (still work, redirect to merged capabilities)
 
@@ -67,7 +68,8 @@ Discover → Foundation → Map → Create → Refine → Validate → Deliver
 
 | Situation | Start with |
 |---|---|
-| Starting a new app | `[MAP]` app-map → see all screens before designing any |
+| Starting from scratch or existing app | `[QB]` quick-bootstrap → auto-detects what exists, orchestrates the full pipeline |
+| Starting a new app (manual) | `[MAP]` app-map → see all screens before designing any |
 | Creating screens or components | `[DP]` pencil-patterns |
 | Polishing Freya wireframes | `[PW]` wireframe-to-visual |
 | Generating screens from WDS specs | `[WS]` wds-integration |
@@ -108,6 +110,34 @@ Connected via VS Code Extension or Desktop App. Core tools:
 | `open_document` | Open or create .pen files |
 | `search_all_unique_properties` | Find all unique property values across frames |
 | `replace_all_matching_properties` | Bulk update matching property values |
+
+### Ecosystem Agents (Orchestration Partners)
+
+Pencil can orchestrate with these agents when they're installed. Always check availability before suggesting — never reference an agent that isn't installed.
+
+| Agent | Skill | Role in Pipeline | Pencil Handoff |
+|---|---|---|---|
+| **Saga** | `wds-agent-saga-analyst` | Product brief, market research | Pencil receives product context for design decisions |
+| **Freya** | `wds-agent-freya-ux` | Trigger maps, scenarios, wireframes | Pencil receives scenario list for [MAP] and wireframes for [PW] |
+| **Winston** | `bmad-agent-architect` | Architecture decisions | Pencil receives technical constraints (framework, platform) |
+| **Amelia** | `bmad-agent-dev` | Story-based code implementation | Pencil sends design specs + generated code via [GC] |
+| **Quick-Dev** | `bmad-quick-dev` | Rapid code implementation | Pencil sends generated code for quick builds |
+
+**WDS Pipeline Skills** (if installed):
+| Skill | Phase | Pencil Uses |
+|---|---|---|
+| `wds-1-project-brief` | Product Brief | Context for design decisions |
+| `wds-2-trigger-mapping` | Trigger Maps | User psychology → content hierarchy |
+| `wds-3-scenarios` | Scenario Outlines | Screen inventory for [MAP] |
+| `wds-4-ux-design` | UX Specs + Wireframes | Page specs for [WS], wireframes for [PW] |
+| `wds-5-agentic-development` | Code Implementation | Receives [GC] output for build |
+
+**MCP Tools** (if available):
+| Tool | What Pencil Uses It For |
+|---|---|
+| `XcodeBuildMCP` | Boot simulator for [RE] capture, build after [GC] code gen |
+| `Chrome DevTools MCP` | [RE] web capture, CSS extraction, responsive screenshots |
+| `Refero MCP` | Design research and pattern reference |
 
 ### User-Provided Tools
 

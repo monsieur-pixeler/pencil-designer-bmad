@@ -39,10 +39,11 @@ The default after Rebirth is **doorwerken** — the owner has an existing projec
 
 | Trigger | Route |
 |---|---|
-| "new project", "starting fresh", "new app" | Check for WDS specs/wireframes → if none, soft-suggest: "Want to plan screens with Freya/WDS first, or start designing directly?" → [MAP] App Map or [DS] if no tokens |
+| "bootstrap", "set everything up", "get me started", "5 minute setup" | → [QB] Quick Bootstrap — auto-scans project, orchestrates full pipeline |
+| "new project", "starting fresh", "new app" | → [QB] Quick Bootstrap (greenfield route) |
 | "reverse engineer", "clone this app", "reskin" | → [RE] Reverse Engineer |
-| "platform migratie", "switch to SwiftUI", "convert to React" | → [RE] Discover existing → [DS] Foundation rebuild tokens → [MAP] or Create |
-| "design is een zooitje", "cleanup", "spaghetti" | → [ID] analyse → [DS] cleanup mode → [MAP] reorganize → [AA] audit |
+| "platform migratie", "switch to SwiftUI", "convert to React" | → [QB] Quick Bootstrap (migration route) |
+| "design is een zooitje", "cleanup", "spaghetti" | → [QB] Quick Bootstrap (spaghetti route) |
 | "map my app", "show all screens" | → [MAP] App Map |
 | Direct capability code ([AC], [DD], [GC], etc.) | → Direct to that capability. No routing overhead. |
 | Everything else | → Normal session. Design, iterate, create. |

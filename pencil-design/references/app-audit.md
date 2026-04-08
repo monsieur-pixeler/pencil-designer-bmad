@@ -47,6 +47,42 @@ For 5+ screens: announce before spawning — "Scanning {N} screens in parallel �
 
 **Accessibility issues:** Flag obvious contrast problems (use `scripts/contrast-ratio.py` for verification).
 
+### Design Quality Checks (Impeccable-informed)
+
+These checks catch design anti-patterns that token/consistency audits miss. Run them on every audit.
+
+**AI Slop Detection** — Flag these visual anti-patterns that signal generic, undesigned output:
+
+| Pattern | How to detect in .pen | Severity |
+|---|---|---|
+| Identical card grids | Hash child node structures — if 3+ frames have identical structure + same dimensions, flag | Medium |
+| Everything centered | Check top-level content frames: if >80% use `alignItems: "center"`, flag | Low |
+| Same spacing everywhere | Collect all gap/padding values — if <3 unique values across 5+ screens, flag as "no rhythm" | Medium |
+| Decorative-only elements | Frames with no text children, no interactive purpose, and opacity <0.5 — likely decorative noise | Low |
+
+**Typographic Hierarchy Check** — Verify that the type scale creates clear visual hierarchy:
+
+```
+Scan all text nodes → extract fontSize + fontWeight combinations → sort descending
+
+Expected: clear ladder (e.g. 28/800, 24/700, 20/600, 15/400, 13/500, 11/500)
+Flag: steps smaller than 2px between adjacent levels (no perceptible difference)
+Flag: more than 2 weights used at the same font size (visual noise)
+Flag: body text below 14px (readability risk)
+Flag: heading weight lighter than body weight (inverted hierarchy)
+```
+
+**Cognitive Load Check** — Flag screens with too many competing elements:
+
+```
+Per screen frame, count:
+  - Interactive elements (buttons, toggles, links, tappable rows): flag if > 7 primary actions
+  - Distinct visual sections: flag if > 5 with no progressive disclosure
+  - Unique colors used: flag if > 8 (palette bloat)
+
+Report: "Dashboard has 9 primary actions — consider progressive disclosure or grouping"
+```
+
 ## Output
 
 Present a prioritized audit:

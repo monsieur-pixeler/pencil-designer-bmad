@@ -132,6 +132,21 @@ Pencil can orchestrate with these agents when they're installed. Always check av
 | `wds-4-ux-design` | UX Specs + Wireframes | Page specs for [WS], wireframes for [PW] |
 | `wds-5-agentic-development` | Code Implementation | Receives [GC] output for build |
 
+**Design Quality Partners** (if installed):
+| Skill | Role | Integration |
+|---|---|---|
+| `teach-impeccable` | One-time design context setup | Writes `.impeccable.md` → Pencil reads it every session |
+| `frontend-design` | Design principles + AI slop detection | Pencil's [AA] audit uses these principles on canvas |
+| `critique` | Full UX critique with heuristics scoring | Run after [GC] code generation for code-level quality review |
+| `audit` | Technical quality audit on code | Run after [GC] for performance, accessibility, and standards checks |
+
+**Impeccable workflow with Pencil:**
+1. `teach-impeccable` → establishes `.impeccable.md` (one-time)
+2. Pencil reads `.impeccable.md` + `DESIGN.md` every session (automatic)
+3. Pencil designs screens with these principles internalized
+4. [GC] generates code → `critique` reviews the code → feedback to Pencil if needed
+5. Final `polish` pass on the code before shipping
+
 **MCP Tools** (if available):
 | Tool | What Pencil Uses It For |
 |---|---|

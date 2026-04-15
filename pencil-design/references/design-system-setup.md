@@ -169,6 +169,40 @@ Foundation [DS] doesn't always need to be explicitly invoked:
 
 DS is the **writing mechanism** — other capabilities trigger it when tokens are missing.
 
+## Sync .impeccable.md
+
+After every DS run (interactive, import, or cleanup), update `{project-root}/.impeccable.md` to keep it in sync with the design system. This file is the shared design context for all tools — not just Pencil.
+
+**If `.impeccable.md` exists:** Update the `### Design System` section with current tokens. Don't overwrite other sections (Users, Brand Personality, Aesthetic Direction) — those belong to the owner.
+
+**If it doesn't exist:** Create it with the Design System section and placeholder sections for the owner to fill:
+
+```markdown
+## Design Context
+
+### Users
+_[To be filled — run /teach-impeccable or describe your target audience]_
+
+### Brand Personality
+_[To be filled — describe your brand in 3 words]_
+
+### Aesthetic Direction
+_[To be filled — visual tone, references, anti-references]_
+
+### Design Principles
+_[To be filled — 3-5 principles that guide all design decisions]_
+
+### Design System
+Palette: {light/dark/warm} mode, {N} colors, accent {accent hex}
+Typography: {display font} (display) + {body font} (body)
+Spacing: {N}px grid
+Tokens: see DESIGN.md for full reference
+Framework: {SwiftUI/React/etc.}
+Established: {date}
+```
+
+This ensures that when Impeccable's `/critique` or `/polish` runs on generated code, it knows the design system context without re-asking.
+
 ## Memory Integration
 
 Store the design system summary in MEMORY.md:
@@ -181,4 +215,4 @@ Spacing: 8px grid
 
 ## After the Session
 
-Log: which tokens were established/imported/consolidated, DESIGN.md location, any design decisions made.
+Log: which tokens were established/imported/consolidated, DESIGN.md location, .impeccable.md updated, any design decisions made.

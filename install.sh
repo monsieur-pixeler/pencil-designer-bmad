@@ -86,6 +86,12 @@ echo "  Location:     ${SKILL_DEST}"
 echo "  Files:        ${FILE_COUNT}"
 echo "  Capabilities: ${CAP_COUNT} built-in"
 echo ""
+# Check for Impeccable
+IMPECCABLE_INSTALLED=false
+if [ -d "${PROJECT_ROOT}/.claude/skills/impeccable" ] || [ -d "${PROJECT_ROOT}/.claude/skills/teach-impeccable" ]; then
+    IMPECCABLE_INSTALLED=true
+fi
+
 echo -e "${YELLOW}Next steps:${NC}"
 echo ""
 echo "  1. Start Claude Code in this project"
@@ -94,6 +100,21 @@ echo "     — or just start designing:  \"Talk to Pencil\""
 echo ""
 echo "  Pencil will run First Breath automatically on the first session"
 echo "  to learn about your project, design system, and preferences."
+echo ""
+
+if [ "${IMPECCABLE_INSTALLED}" = true ]; then
+    echo -e "  ${GREEN}Impeccable detected${NC} — Pencil will sync with .impeccable.md"
+    echo "  for shared design context across all design-aware tools."
+else
+    echo -e "  ${YELLOW}Recommended:${NC} Install Impeccable for design quality reviews"
+    echo "  on generated code. Pencil designs on canvas, Impeccable reviews code."
+    echo ""
+    echo "    npx impeccable@latest init"
+    echo ""
+    echo "  Pencil will automatically sync .impeccable.md with your design system"
+    echo "  so both tools share the same design language."
+fi
+
 echo ""
 echo "  Requirements: Pencil.dev (Desktop App or VS Code Extension)"
 echo "                uv (for Python scripts)"

@@ -56,6 +56,32 @@ Pencil detects what you need based on your intent:
 | "Design the settings screen" | Straight to [DP] — no routing overhead |
 | `[AC]` or any capability code | Direct access, always works |
 
+### Works with Impeccable
+
+[Impeccable](https://impeccable.style) is a design quality skill pack with 20 commands for code-level design reviews (/critique, /polish, /animate, /typeset, etc.). Pencil and Impeccable are **design partners on different layers**:
+
+```
+                 .impeccable.md (shared design context)
+                 ↙                        ↘
+Pencil (canvas layer)              Impeccable (code layer)
+designs screens in .pen            reviews generated code
+extracts tokens                    enforces design quality
+writes .impeccable.md              reads .impeccable.md
+```
+
+**How they work together:**
+1. **`teach-impeccable`** or Pencil's First Breath establishes `.impeccable.md` (design context)
+2. Pencil reads `.impeccable.md` every session — informs all design decisions
+3. Pencil's `[DS]` keeps `.impeccable.md` in sync when the design system evolves
+4. After `[GC]` code generation → Impeccable's `/critique` reviews the code
+5. Feedback flows back to Pencil if design adjustments are needed
+
+Install Impeccable alongside Pencil for the full design quality pipeline:
+
+```bash
+npx impeccable@latest init
+```
+
 ### Memory Architecture
 
 Pencil is a **memory agent** — it builds understanding of your project across sessions:

@@ -66,7 +66,7 @@ def flatten_tree(node: dict, path: str = '') -> dict[str, dict]:
 
 def compare_value(a, b) -> bool:
     """Return True if values are considered equal (with tolerance for floats)."""
-    if type(a) != type(b):
+    if type(a) is not type(b):
         return False
     if isinstance(a, float) and isinstance(b, float):
         return abs(a - b) < 0.5  # sub-pixel tolerance

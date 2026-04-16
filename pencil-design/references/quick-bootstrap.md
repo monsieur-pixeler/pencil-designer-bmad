@@ -294,14 +294,6 @@ If the owner chooses code handoff and a dev agent is available:
 3. Invoke dev agent with the package
 4. Report: "Amelia is implementing Dashboard, Check-in, and Settings. I'll stay available for design questions."
 
-## Memory Integration
-
-After bootstrap:
-- Store the bootstrap path taken in session log (which route, which agents used)
-- Store screen inventory in MEMORY.md (count, names, status)
-- Note which agents were used and their output quality in BOND.md
-- If WDS specs exist: note their location for future [WS] batch runs
-
 ## After the Session
 
-Log: bootstrap route taken, scan results, agents orchestrated, screens generated, time to canvas. Update MEMORY.md with the complete screen inventory and design system summary.
+Follow the standard session close protocol. Additionally log: bootstrap route taken, scan results, agents orchestrated, screens generated, time to canvas. Store screen inventory in MEMORY.md. Note agent output quality in BOND.md.

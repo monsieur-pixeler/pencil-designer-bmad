@@ -203,16 +203,6 @@ Established: {date}
 
 This ensures that when Impeccable's `/critique` or `/polish` runs on generated code, it knows the design system context without re-asking.
 
-## Memory Integration
-
-Store the design system summary in MEMORY.md:
-```
-Design System: established {date}
-Palette: light mode, 6 colors, accent #F97316
-Typography: Outfit (display) + Inter (body)
-Spacing: 8px grid
-```
-
 ## After the Session
 
-Log: which tokens were established/imported/consolidated, DESIGN.md location, .impeccable.md updated, any design decisions made.
+Follow the standard session close protocol. Additionally log: which tokens were established/imported/consolidated, DESIGN.md location, .impeccable.md updated, design decisions made. Store the design system summary in MEMORY.md.

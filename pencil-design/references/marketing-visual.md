@@ -124,10 +124,6 @@ Build these in order, each as a separate frame at the same x position, stacking 
 | Pitch deck | 1920×1080 | 16:9, readable from 10 feet |
 | LinkedIn/Twitter card | 1200×628 | Single image, headline prominent |
 
-## Memory Integration
-
-After creating marketing visuals: note which marketing agent was used and the quality of their output in session log. Log successful content frameworks to BOND.md for future reference. If owner repeatedly uses a specific tone or headline style, note in patterns.
-
 ## After the Session
 
-Log: which assets were created, which marketing agent was used, any notable content decisions. Update MEMORY.md with the product's positioning and messaging for future design sessions.
+Follow the standard session close protocol. Additionally log: which assets were created, which marketing agent was used, content decisions. Update MEMORY.md with the product's positioning and messaging. Note successful content frameworks in BOND.md.

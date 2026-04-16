@@ -93,10 +93,6 @@ After 3+ screens: review for repeating patterns, create reusable components.
 | Navigation tabs | Tab bar with active state |
 | Call to action | Full-width CTA Button |
 
-## Memory Integration
-
-Update MEMORY.md with WDS progress after each batch. Note in session log which screens were completed.
-
 ## After the Session
 
-Log: screens completed, approval patterns, any spec ambiguities resolved (add to BOND.md workflow preferences).
+Follow the standard session close protocol. Additionally log: screens completed, approval patterns, any spec ambiguities resolved. Update MEMORY.md with WDS progress after each batch.

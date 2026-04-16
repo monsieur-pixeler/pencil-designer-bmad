@@ -290,10 +290,6 @@ fill: [{ type: "color", color: "$text-primary" }]
 
 This keeps script nodes in sync with the design system. When tokens change, script nodes update automatically.
 
-## Memory Integration
-
-Store commonly requested script node types in session log. After 3+ sessions creating similar nodes, suggest adding a script template to MEMORY.md for faster generation.
-
 ## After the Session
 
-Log: which script nodes were created, what data they visualize, any reusable patterns discovered.
+Follow the standard session close protocol. Additionally log: which script nodes were created, what data they visualize, reusable patterns discovered. After 3+ sessions creating similar nodes, suggest adding a script template to MEMORY.md.

@@ -69,10 +69,6 @@ Per screen, include if the owner requests it:
 - Interaction notes (what happens on tap, swipe, etc.)
 - Edge cases (empty state, loading state, error state)
 
-## Memory Integration
-
-Note in session log which screens were handed off. Update MEMORY.md if any outstanding design decisions need resolution before implementation.
-
 ## After the Session
 
-Log: export location, component catalog path, any implementation notes provided.
+Follow the standard session close protocol. Additionally log: export location, component catalog path, implementation notes, outstanding design decisions.

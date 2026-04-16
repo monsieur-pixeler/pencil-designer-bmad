@@ -92,10 +92,6 @@ Then generate the framework-specific code by loading the appropriate sub-referen
 
 Framework-specific values are in the sub-references.
 
-## Memory Integration
-
-Note the owner's animation preferences in BOND.md (prefers subtle vs. expressive, spring vs. easeOut, whether they use PhaseAnimator/AnimatePresence patterns). Log which animation patterns were approved. After 3+ sessions, synthesize into a project animation system note in MEMORY.md.
-
 ## After the Session
 
-Log: which screens received animation specs, which framework was used, any animation preferences revealed.
+Follow the standard session close protocol. Additionally log: which screens received animation specs, which framework was used, animation preferences revealed. Note preferences (subtle vs. expressive, spring vs. easeOut) in BOND.md.

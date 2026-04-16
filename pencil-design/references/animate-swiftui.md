@@ -238,10 +238,6 @@ Transitions:
   Metric → chart — matchedGeometryEffect on metric value
 ```
 
-## Memory Integration
-
-Note the owner's animation preferences in BOND.md (prefers subtle vs. expressive, spring vs. easeOut, whether they use PhaseAnimator patterns). Log which animation patterns were approved. After 3+ sessions, synthesize into a project animation system note in MEMORY.md.
-
 ## After the Session
 
-Log: which screens received animation specs, which SwiftUI patterns were used, any animation preferences revealed.
+Follow the standard session close protocol. Additionally log: which screens received SwiftUI animation specs, which patterns were used, animation preferences revealed.

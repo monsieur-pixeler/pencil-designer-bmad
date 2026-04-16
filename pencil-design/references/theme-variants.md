@@ -78,10 +78,6 @@ For 5+ screens: spawn subagents to read structures in parallel. Each returns com
 
 Use the inventory to determine which screens need manual node-by-node swaps vs. which will auto-switch via themed variables, then generate variants sequentially.
 
-## Memory Integration
-
-Log notable theme decisions in session log. If new theme tokens were needed, flag for DESIGN.md update.
-
 ## After the Session
 
-Note which theme approach the owner preferred, update BOND.md design taste.
+Follow the standard session close protocol. Additionally log: which theme approach the owner preferred, any new theme tokens needed for DESIGN.md update.

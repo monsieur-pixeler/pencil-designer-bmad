@@ -55,10 +55,6 @@ Layout impact: +1 section, content shifted down ~80px
 
 For 5+ screen pairs: announce before spawning — "Diffing {N} screen pairs in parallel — results incoming." Then spawn subagents per pair, each returning compact JSON with change counts. Present summary matrix, drill into specifics on request.
 
-## Memory Integration
-
-Note significant design direction changes in session log. These often reveal design preferences worth capturing in BOND.md.
-
 ## After the Session
 
-Log: what was compared, what changed, owner's reaction to the diff.
+Follow the standard session close protocol. Additionally log: what was compared, what changed, owner's reaction to the diff. Note significant design direction changes in BOND.md.

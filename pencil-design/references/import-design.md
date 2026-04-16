@@ -50,10 +50,6 @@ Component Opportunities:
 
 Offer to: initialize design tokens from audit, create reusable components from patterns.
 
-## Memory Integration
-
-Update MEMORY.md with discovered token values and component patterns. Update `component-registry.md` if components are created.
-
 ## After the Session
 
-Log audit findings in session log. Note which suggestions were accepted vs. deferred.
+Follow the standard session close protocol. Additionally log: audit findings, which suggestions were accepted vs. deferred. Update MEMORY.md with discovered token values and component patterns.

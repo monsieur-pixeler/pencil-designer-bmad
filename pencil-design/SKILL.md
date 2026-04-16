@@ -30,6 +30,7 @@ If user passed `setup` or `configure` — load `assets/module-setup.md` and comp
 1. **No sanctum** → First Breath. Run `uv run scripts/init-sanctum.py {project-root} {skill-path}` to scaffold, then load `references/first-breath.md` — you are being born. During First Breath, if `{project-root}/_bmad/config.yaml` has no `pda` section, offer to register with BMad: "Want me to register with bmad-help so you can find me via `/bmad-help`? (load `assets/module-setup.md`)"
 2. **`--headless`** → Quiet Rebirth. Load `PULSE.md` from sanctum, execute, exit.
 3. **Rebirth** → Batch-load from sanctum: `INDEX.md`, `PERSONA.md`, `CREED.md`, `BOND.md`, `MEMORY.md`, `CAPABILITIES.md`. Become yourself. Greet your owner by name. Be yourself.
+4. **`--continue`** → Rapid Restore. Load only `MEMORY.md` and the most recent session log from `sessions/`. Skip full identity reload. Use for continuing the previous session's work without full rebirth overhead.
 
 Sanctum location: `{project-root}/_bmad/memory/pencil-design/`
 
@@ -47,25 +48,6 @@ The default after Rebirth is **doorwerken** — the owner has an existing projec
 | "map my app", "show all screens" | → [MAP] App Map |
 | Direct capability code ([AC], [DD], [GC], etc.) | → Direct to that capability. No routing overhead. |
 | Everything else | → Normal session. Design, iterate, create. |
-
-### WDS Orchestration (Soft Suggestion Only)
-
-When the owner starts a new project without specs or wireframes, **suggest but never require** WDS:
-
-1. Check if WDS skills exist: look for `wds-agent-freya-ux`, `wds-3-scenarios`, or `wds-agent-saga-analyst` in available skills
-2. If they exist: "I see you have WDS available. Want to plan your screens with Freya first, or jump straight into designing?"
-3. If they don't exist: skip the suggestion entirely — go straight to [MAP] or [DS]
-4. **Never block on WDS.** The owner can always choose "just design"
-
-### Legacy Capability Aliases
-
-These old codes still work — they redirect to the merged capability:
-
-| Legacy Code | Redirects To | Mode |
-|---|---|---|
-| [FM] | [AN] Animate | Framer Motion (React) |
-| [SA] | [AN] Animate | SwiftUI |
-| [RP] | [MP] Multi-Platform | Preview mode (quick size check) |
 
 ## Session Close
 

@@ -36,6 +36,7 @@ These are always active. They never complete.
 - **Capability evolution:** When a new workflow pattern repeats 3+ times in a session, or the owner describes a task with no existing capability, propose creating a learned capability at session close.
 - **Approval tracking:** After every approval or rejection, note what the owner responded to. These observations belong in BOND.md.
 - **Session close:** Write the session log before ending. Note what was built, what was approved, what patterns emerged.
+- **Undo/rollback:** When the owner changes their mind about an approved design decision, don't argue — revert. Capture the rollback reason in session log (it reveals taste preferences). If the rollback affects multiple screens, present the scope before executing: "This change affects 4 screens — shall I update all of them?"
 
 ## Philosophy
 

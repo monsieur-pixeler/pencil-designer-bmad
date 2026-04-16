@@ -40,258 +40,12 @@ Also ask: **"What's the goal?"** This determines the output:
 
 ## Phase 1: Capture
 
-### Web App (Chrome DevTools MCP) — Fully Automated
-
-This is the most powerful path. We can extract actual CSS values, not just pixel-guess.
-
-**Step 1 — Initial scan:**
-
-```
-1. navigate_page({url: "..."})
-2. take_screenshot() — capture the landing/home state
-3. evaluate_script({expression: `JSON.stringify({
-     colors: [...new Set([...document.querySelectorAll('*')].flatMap(el => {
-       const s = getComputedStyle(el);
-       return [s.color, s.backgroundColor, s.borderColor].filter(c => c !== 'rgba(0, 0, 0, 0)');
-     })))],
-     fonts: [...new Set([...document.querySelectorAll('*')].map(el => {
-       const s = getComputedStyle(el);
-       return s.fontFamily.split(',')[0].trim().replace(/['"]/g, '');
-     })))],
-     spacing: [...new Set([...document.querySelectorAll('*')].flatMap(el => {
-       const s = getComputedStyle(el);
-       return [s.gap, s.padding, s.margin].filter(v => v && v !== '0px');
-     })))]
-   })`})
-```
-
-This gives us the real CSS token palette in one call.
-
-**Step 2 — Screen inventory:**
-
-Navigate each major route. For SPAs:
-
-```
-evaluate_script({expression: `
-  // Extract all internal links
-  JSON.stringify([...document.querySelectorAll('a[href]')]
-    .map(a => a.href)
-    .filter(h => h.startsWith(location.origin))
-    .filter((v,i,a) => a.indexOf(v) === i)
-  )
-`})
-```
-
-For each unique route: `navigate_page` → `take_screenshot` → save.
-
-**Step 3 — Component extraction (DOM-level):**
-
-```
-evaluate_script({expression: `
-  // Find repeated structural patterns
-  const patterns = {};
-  document.querySelectorAll('[class]').forEach(el => {
-    const cls = [...el.classList].sort().join(' ');
-    if (!patterns[cls]) patterns[cls] = { count: 0, tag: el.tagName, sample: el.outerHTML.substring(0, 200) };
-    patterns[cls].count++;
-  });
-  JSON.stringify(Object.entries(patterns)
-    .filter(([_, v]) => v.count >= 3)
-    .sort((a, b) => b[1].count - a[1].count)
-    .slice(0, 20)
-    .map(([cls, v]) => ({ class: cls, count: v.count, tag: v.tag }))
-  )
-`})
-```
-
-**Step 4 — Responsive capture (optional):**
-
-```
-// Capture at multiple viewport sizes
-emulate({device: "iPhone 12"})  → take_screenshot()
-emulate({device: "iPad"})       → take_screenshot()
-resize_page({width: 1440, height: 900}) → take_screenshot()
-```
-
-### iOS App on Simulator — Fully Automated
-
-**Step 1 — Boot and launch:**
-
-```bash
-# List available simulators
-xcrun simctl list devices available | grep -E "iPhone|iPad"
-
-# Boot if needed
-xcrun simctl boot "iPhone 16 Pro"
-
-# Launch the target app (user provides bundle ID or app name)
-xcrun simctl launch booted com.example.app
-```
-
-**Step 2 — Guided capture with auto-screenshot:**
-
-Announce: "I'll take screenshots as you navigate. Tell me when you've reached each screen, or I'll capture every 3 seconds if you prefer auto-mode."
-
-```bash
-# Single screenshot
-xcrun simctl io booted screenshot /tmp/re-capture/screen-001.png
-
-# Or timed burst (auto-mode):
-# Take a screenshot every 3 seconds for N seconds
-for i in $(seq 1 20); do
-  xcrun simctl io booted screenshot "/tmp/re-capture/screen-$(printf '%03d' $i).png"
-  sleep 3
-done
-```
-
-**Step 3 — Deduplicate:**
-
-After auto-capture, compare sequential screenshots to remove duplicates (user was idle on the same screen). Use image comparison:
-
-```bash
-# Quick pixel diff — if images are identical or near-identical, skip
-python3 -c "
-from pathlib import Path
-import hashlib
-seen = {}
-for f in sorted(Path('/tmp/re-capture').glob('*.png')):
-    h = hashlib.md5(f.read_bytes()).hexdigest()
-    if h in seen: f.unlink()
-    else: seen[h] = f
-print(f'Kept {len(seen)} unique screens')
-"
-```
-
-### iOS/iPad Device via AirPlay — Guided
-
-**Setup instructions for the user:**
-
-> 1. Open **QuickTime Player** on your Mac
-> 2. File → New Movie Recording
-> 3. Click the dropdown arrow next to the record button → select your iPhone/iPad
-> 4. Your device screen is now mirrored in QuickTime
-> 5. Keep the QuickTime window visible — I'll capture from it
-
-**Or with AirPlay (macOS Monterey+):**
-
-> 1. On your iPhone: open Control Center → Screen Mirroring → select your Mac
-> 2. Your phone screen appears in a window on your Mac
-> 3. Keep it visible — I'll capture from it
-
-**Guided navigation:**
-
-The system drives the process step by step:
-
-```
-"Navigate to the main/home screen and say 'ready'."
-→ user says "ready"
-→ screencapture -x /tmp/re-capture/01-home.png
-→ "Got it. Now open the settings or profile screen."
-→ user says "ready"
-→ screencapture -x /tmp/re-capture/02-settings.png
-→ "Good. Now open any list or detail view."
-...
-```
-
-**Smart prompting — ask about the app structure first:**
-
-Before capturing, ask: "Describe the main sections of the app — how many tabs, what are the key screens?" This lets the system create a capture plan:
-
-```
-Capture plan for [App Name]:
-  1. [ ] Tab 1: Dashboard / Home
-  2. [ ] Tab 2: History / Feed
-  3. [ ] Tab 3: Add / Create
-  4. [ ] Tab 4: Profile / Settings
-  5. [ ] Key detail screen (from tab 1)
-  6. [ ] Any modal / sheet
-  7. [ ] Empty state (if accessible)
-  8. [ ] Dark mode (if available — toggle in Control Center)
-```
-
-Check off each as captured. Announce progress: "4 of 8 screens captured. Next: open the Profile tab."
-
-**Auto-mode option:**
-
-```
-"Want me to capture automatically every 3 seconds while you navigate?
-Just swipe through the app naturally — I'll sort out the duplicates."
-```
-
-Then use `screencapture` in a timed loop, deduplicate after.
-
-### macOS App — Semi-Automated
-
-macOS apps can be captured per-window and inspected via Accessibility APIs.
-
-**Step 1 — Find the app window:**
-
-```bash
-# List all windows with their IDs (for targeted capture)
-osascript -e 'tell application "System Events" to get {name, id} of every window of every process whose visible is true'
-
-# Or find a specific app:
-osascript -e 'tell application "System Events" to get id of every window of process "[App Name]"'
-```
-
-**Step 2 — Capture the window:**
-
-```bash
-# Capture a specific window by ID (no shadow, no desktop)
-screencapture -l <windowID> -o /tmp/re-capture/01-main.png
-
-# Or interactive: let user click the window
-screencapture -w -o /tmp/re-capture/01-main.png
-```
-
-**Step 3 — Accessibility inspection (optional, powerful):**
-
-macOS Accessibility APIs expose the entire UI tree — labels, roles, frames, values:
-
-```bash
-# Dump the accessibility tree of the frontmost app
-python3 -c "
-import subprocess, json
-result = subprocess.run(
-    ['osascript', '-e', '''
-    tell application \"System Events\"
-        set frontApp to first application process whose frontmost is true
-        set appName to name of frontApp
-        set winList to {}
-        repeat with w in windows of frontApp
-            set winInfo to {name of w, position of w, size of w}
-            set end of winList to winInfo
-        end repeat
-        return {appName, winList}
-    end tell
-    '''],
-    capture_output=True, text=True
-)
-print(result.stdout)
-"
-```
-
-This gives us actual element positions and sizes — more accurate than pixel-guessing for layout extraction.
-
-**Step 4 — Guided navigation for multiple states:**
-
-Mac apps often have multiple view states in one window (sidebar selections, tabs, inspectors). Guide the user:
-
-```
-"Click on each sidebar item and say 'ready' — I'll capture each state."
-"Open the preferences window and say 'ready'."
-"Resize the window to minimum width and say 'ready' — I'll check the compact layout."
-```
-
-**Step 5 — Window chrome detection:**
-
-macOS windows have standard chrome (title bar, toolbar, sidebar). Detect:
-- **Title bar:** Standard (28px) or tall toolbar style
-- **Sidebar:** NavigationSplitView pattern (detect from width ratio)
-- **Tab bar:** Segmented control in toolbar or tab view
-- **Inspector:** Right-side panel (if window has three columns)
-
-Map these to NavigationSplitView / HSplitView patterns for macOS rebuild.
+Load the capture reference for the detected source:
+- Web app → load `references/re-capture-web.md`
+- iOS simulator → load `references/re-capture-ios-sim.md`
+- iOS device (AirPlay) → load `references/re-capture-ios-device.md`
+- macOS app → load `references/re-capture-macos.md`
+- Screenshots folder / Figma / Sketch → no capture reference needed — read images from disk
 
 ### Screenshots Folder — Manual
 
@@ -302,6 +56,16 @@ Otherwise I'll analyze them in modification-time order."
 ```
 
 Read all images from the folder, present them back for the user to name/confirm.
+
+### Dark Mode Capture
+
+If the app supports dark mode:
+
+1. Capture all screens in light mode first
+2. Switch to dark mode (Settings or Control Center)
+3. Re-capture the same screens
+4. Extract dark mode tokens as a separate palette
+5. Use `[TV]` Theme Variants to set up both themes in Pencil
 
 ---
 
@@ -579,53 +343,6 @@ You can iterate, create variants, or generate code from here.
 
 ---
 
-## Platform-Specific Tips
-
-### Web Apps — Getting the Most Data
-
-- Use `evaluate_script` to extract CSS custom properties (`:root` variables) — these ARE the design tokens
-- Check for Tailwind: `evaluate_script` to read `tailwind.config` if it's exposed
-- Extract SVG icons and their names for icon mapping
-- Check responsive breakpoints: resize viewport and capture at each breakpoint
-
-### iOS Apps — System Conventions
-
-- SF Pro is the system font — don't extract it as a custom font, map to iOS text styles
-- Tab bar is 49px, nav bar is 44px (large title: 96px) — use standard heights
-- Safe area: 59px top (Dynamic Island), 34px bottom (home indicator)
-- Pull-to-refresh, swipe-to-delete — note interaction patterns, not just visuals
-
-### macOS Apps — Window Patterns
-
-- Standard title bar: 28px. Toolbar: 38-52px depending on style
-- Sidebar width: typically 200-280px (NavigationSplitView default: 240px)
-- Three-column layout: sidebar (240) + content (flexible) + inspector (260-300)
-- macOS uses pointer-sized targets (smaller than iOS 44pt minimum)
-- Menu bar: not part of the window — capture separately if menu structure matters
-- Sheets: slide down from toolbar, not from bottom like iOS
-- Popovers: common for settings/options — capture these as separate states
-- Use `NSWindow.contentLayoutRect` via Accessibility to get exact content area bounds
-
-### Dark Mode Capture
-
-If the app supports dark mode:
-
-1. Capture all screens in light mode first
-2. Switch to dark mode (Settings or Control Center)
-3. Re-capture the same screens
-4. Extract dark mode tokens as a separate palette
-5. Use `[TV]` Theme Variants to set up both themes in Pencil
-
----
-
-## Memory Integration
-
-After reverse engineering:
-- Store the source app name and capture method in session log
-- Add extracted design system to BOND.md (this is now the owner's design language)
-- Register all created components in `component-registry.md`
-- Note which screens were captured and their accuracy scores in MEMORY.md
-
 ## After the Session
 
-Log: app name, capture method, screens captured/rebuilt, design system summary, accuracy scores. Update BOND.md with the established design language.
+Follow the standard session close protocol. Additionally log: app name, capture method, screens captured/rebuilt, design system summary, accuracy scores. Update BOND.md with the established design language.

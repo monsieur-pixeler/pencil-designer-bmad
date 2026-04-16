@@ -31,7 +31,6 @@ SWIFT_COLOR_RE = re.compile(
 SWIFT_HEX_RE = re.compile(r'Color\(hex:\s*["\']([#0-9A-Fa-f]+)["\']')
 CSS_VAR_RE = re.compile(r'--([\w-]+)\s*:\s*([^;]+);')
 TAILWIND_COLOR_RE = re.compile(r'["\']?([\w-]+)["\']?\s*:\s*["\']([#\w]+)["\']')
-HEX_NORMALIZE_RE = re.compile(r'^#?([0-9A-Fa-f]{3,8})$')
 
 
 def normalize_hex(value: str) -> str | None:
@@ -126,8 +125,6 @@ def diff_tokens(pencil: dict[str, str], code: dict[str, str]) -> dict:
     drifted = []
     missing_in_code = []
     missing_in_pencil = []
-
-    pencil_values = {v: k for k, v in pencil.items()}  # value→name reverse map
 
     for name, pencil_hex in pencil.items():
         if name in code:

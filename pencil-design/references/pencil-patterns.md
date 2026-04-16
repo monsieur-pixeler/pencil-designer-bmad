@@ -159,10 +159,6 @@ C("tabbar-id", newScreen, {})
 - Check existing components with `batch_get({reusable: true})` before building new ones
 - `snapshot_layout({problemsOnly: true})` after complex layouts to catch hidden issues
 
-## Memory Integration
-
-After designing: update `component-registry.md` for any new reusable components. Log approval/rejection patterns to session log. Note any notable design decisions (especially non-obvious ones) for distillation.
-
 ## After the Session
 
-Capture in session log: screens built, components created, owner's design feedback, approval patterns observed.
+Follow the standard session close protocol. Additionally log: screens built, components created, owner's design feedback, approval patterns observed. Update `component-registry.md` for any new reusable components.

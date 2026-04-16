@@ -64,10 +64,6 @@ After creating each component:
 | SectionHeader | node-id | Title + counter row | Dashboard, Check-in, Settings |
 ```
 
-## Memory Integration
-
-Update `component-registry.md` after every harvest. Log to session log.
-
 ## After the Session
 
-Note which patterns were harvested, which were deferred. Update BOND.md if owner preferences about component granularity are revealed.
+Follow the standard session close protocol. Additionally log: which patterns were harvested, which were deferred, component granularity preferences. Update `component-registry.md` after every harvest.

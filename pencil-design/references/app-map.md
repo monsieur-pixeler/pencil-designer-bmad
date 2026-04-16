@@ -237,17 +237,6 @@ After the map is approved, the owner picks where to start. Pencil suggests a sta
 
 Then: load `[DP]` Design & Polish for the selected screen. The map stays on canvas as the reference — every new screen fills in a placeholder frame.
 
-## Memory Integration
-
-Store the screen inventory in MEMORY.md:
-```
-App Map: 13 screens (5 tabs, 3 onboarding, 3 detail, 2 modals)
-Last updated: {date}
-Designed: 8/13 — remaining: Onboarding 2, 3, Edit Profile, Error states
-```
-
-Update after every design session.
-
 ## After the Session
 
-Log: screens inventoried, map layout chosen, gaps identified, which screen was picked to start designing.
+Follow the standard session close protocol. Additionally log: screens inventoried, map layout chosen, gaps identified, which screen was picked to start designing. Store the screen inventory (count, names, status) in MEMORY.md.

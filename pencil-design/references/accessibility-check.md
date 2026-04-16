@@ -132,10 +132,6 @@ For 5+ screens: announce before spawning — "Running accessibility audit on {N}
 
 Present summary matrix, drill into specifics on request.
 
-## Memory Integration
-
-Note recurring accessibility issues in session log. If systematic (e.g., all cards use substandard hint text), note in MEMORY.md for future designs.
-
 ## After the Session
 
-Log: screens audited, failures found, what was fixed.
+Follow the standard session close protocol. Additionally log: screens audited, failures found, what was fixed. Note systematic accessibility issues in MEMORY.md for future designs.

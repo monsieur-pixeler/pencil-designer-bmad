@@ -102,10 +102,6 @@ Low (nice to have):
 
 Offer to fix high-priority issues immediately.
 
-## Memory Integration
-
-Note major findings in session log. If recurring patterns suggest a design system gap, add to MEMORY.md.
-
 ## After the Session
 
-Log: audit scope, findings count, what was fixed vs. deferred.
+Follow the standard session close protocol. Additionally log: audit scope, findings count, what was fixed vs. deferred. Note recurring patterns that suggest design system gaps in MEMORY.md.

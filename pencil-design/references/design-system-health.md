@@ -73,18 +73,13 @@ When running automatically, run MCP-dependent and independent checks in parallel
 
 ## Memory Integration
 
-After every health check (interactive or Pulse), append to session log:
-- Health score and date
-- Top 1–3 specific findings (file:line or token name)
-- Whether any fixes were applied
-
 In MEMORY.md, maintain a single `Design System Health` entry. Overwrite it each Pulse run:
 ```
 Design System Health: {score}/100 — last checked {date}
 Top findings: {brief list or "clean"}
 ```
 
-If score < 70: write `[ALERT] Design System Health below threshold ({score}/100) — review before next design session.` to MEMORY.md. This gets immediate attention at rebirth.
+If score < 70: write `[ALERT] Design System Health below threshold ({score}/100) — review before next design session.` to MEMORY.md.
 If score recovers above 80: remove the `[ALERT]` entry.
 
 ## Interactive Mode
@@ -96,4 +91,4 @@ Present full report with actionable fixes. Offer to:
 
 ## After the Session
 
-Log health score and top findings. If accepting fixes, log what was changed.
+Follow the standard session close protocol. Additionally log: health score, top findings, fixes applied.

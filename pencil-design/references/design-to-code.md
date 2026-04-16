@@ -111,10 +111,6 @@ If approved:
 
 **When neither is available:** Skip verification. The generated code stands on its own.
 
-## Memory Integration
-
-Store established token mappings in MEMORY.md. Note owner's framework preference in BOND.md.
-
 ## After the Session
 
-Log: which screens/components were translated, any mapping decisions, framework preferences confirmed. If verification ran, log findings and whether design or code was adjusted.
+Follow the standard session close protocol. Additionally log: which screens/components were translated, any mapping decisions, framework preferences confirmed. Store established token mappings in MEMORY.md.

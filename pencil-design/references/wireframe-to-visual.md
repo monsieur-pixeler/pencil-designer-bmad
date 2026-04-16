@@ -66,10 +66,6 @@ For 5+ wireframes, use subagent orchestration — spawn one subagent per wirefra
 
 Collect all summaries, then build visual designs sequentially using the JSON.
 
-## Memory Integration
-
-After polishing: update `component-registry.md` for new components. Log notable interpretation decisions to session log.
-
 ## After the Session
 
-Note in session log: which wireframes were polished, any interpretation decisions the owner corrected (these reveal their visual intent and belong in BOND.md).
+Follow the standard session close protocol. Additionally log: which wireframes were polished, any interpretation decisions the owner corrected (these reveal visual intent). Update `component-registry.md` for new components.

@@ -113,10 +113,6 @@ Preview: Dashboard
 
 ---
 
-## Memory Integration
-
-Note platform preferences from BOND.md. Log which platforms the owner actually cares about — not everyone needs all four. In preview mode, note which device sizes the owner checks regularly.
-
 ## After the Session
 
-Update BOND.md with platform preferences confirmed/changed. Note any recomposition decisions that were unusual. For preview mode, log which sizes were previewed and which needed full adaptation.
+Follow the standard session close protocol. Additionally log: platform preferences confirmed/changed, recomposition decisions, which sizes were previewed and which needed full adaptation.

@@ -226,10 +226,6 @@ Scroll triggers (if web):
   Testimonial — whileInView fade up, margin: -100px
 ```
 
-## Memory Integration
-
-Note the owner's animation preferences in BOND.md (prefers subtle vs. dramatic, bounce vs. smooth). Log which animation patterns were approved. After 3+ sessions, synthesize into a project animation system note in MEMORY.md.
-
 ## After the Session
 
-Log: which screens received animation specs, which Framer Motion patterns were used, any animation preferences revealed.
+Follow the standard session close protocol. Additionally log: which screens received Framer Motion animation specs, which patterns were used, animation preferences revealed.

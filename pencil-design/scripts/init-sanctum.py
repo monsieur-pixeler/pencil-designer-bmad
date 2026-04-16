@@ -34,6 +34,7 @@ SKILL_ONLY_FILES = {
     "first-breath.md",
     "memory-guidance.md",
     "capability-authoring.md",
+    "design-knowledge.md",
 }
 
 TEMPLATE_FILES = [

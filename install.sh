@@ -111,6 +111,9 @@ else
     echo ""
     echo "    npx impeccable@latest init"
     echo ""
+    echo "  Also grab the Chrome Extension for one-click visual inspection:"
+    echo "    https://impeccable.style/visual-mode"
+    echo ""
     echo "  Pencil will automatically sync .impeccable.md with your design system"
     echo "  so both tools share the same design language."
 fi
@@ -118,4 +121,7 @@ fi
 echo ""
 echo "  Requirements: Pencil.dev (Desktop App or VS Code Extension)"
 echo "                uv (for Python scripts)"
+echo ""
+echo "  Optional: Chrome Extension for visual design quality checks"
+echo "            https://impeccable.style/visual-mode"
 echo ""

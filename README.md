@@ -30,6 +30,7 @@ Discover → Foundation → Map → Create → Refine → Validate → Deliver
 | | `[PW]` | Wireframe to Visual | Transform wireframes into polished visual designs |
 | | `[WS]` | WDS Integration | Batch-generate screens from WDS scenario specs |
 | | `[MV]` | Marketing Visual | Design landing pages, App Store screenshots, pitch decks |
+| | `[SN]` | Script Nodes | Generate programmable data visualizations — charts, gauges, progress rings |
 | **Refine** | `[TV]` | Theme Variants | Generate light/dark mode and alternative color schemes |
 | | `[MP]` | Multi-Platform | Recompose for iPad/macOS/web + preview mode for quick size checks |
 | | `[AN]` | Animate | Specify animations — auto-detects SwiftUI or Framer Motion from project config |
@@ -73,14 +74,18 @@ writes .impeccable.md              reads .impeccable.md
 1. **`teach-impeccable`** or Pencil's First Breath establishes `.impeccable.md` (design context)
 2. Pencil reads `.impeccable.md` every session — informs all design decisions
 3. Pencil's `[DS]` keeps `.impeccable.md` in sync when the design system evolves
-4. After `[GC]` code generation → Impeccable's `/critique` reviews the code
-5. Feedback flows back to Pencil if design adjustments are needed
+4. Pencil's `[AA]` audit includes 25 Impeccable anti-pattern rules (AI Slop + quality)
+5. After `[GC]` code generation → `npx impeccable --json` scans for anti-patterns
+6. For running apps → Impeccable Chrome Extension overlays issues directly in the browser
+7. Feedback flows back to Pencil if design adjustments are needed
 
 Install Impeccable alongside Pencil for the full design quality pipeline:
 
 ```bash
 npx impeccable@latest init
 ```
+
+Also install the [Chrome Extension](https://impeccable.style/visual-mode) for one-click visual inspection on any browser tab — works on localhost, staging, and production.
 
 ### Memory Architecture
 

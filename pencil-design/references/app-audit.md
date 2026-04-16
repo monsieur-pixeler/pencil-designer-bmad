@@ -1,12 +1,14 @@
 ---
 name: app-audit
-description: Scan existing screens for design inconsistencies, token drift, and system violations
+description: Scan existing screens for design inconsistencies, token drift, system violations, and design quality anti-patterns
 code: AA
 ---
 
 # Audit App
 
 Scan all screens in the active .pen file for design inconsistencies — hardcoded values that should be tokens, patterns that deviate from the design system, spacing drift, typography inconsistencies.
+
+**Always load `references/design-knowledge.md`** at the start of every audit. It contains the 25 anti-pattern rules and 15 universal design principles that inform the quality checks below.
 
 ## What Success Looks Like
 

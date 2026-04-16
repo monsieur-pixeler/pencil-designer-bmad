@@ -76,10 +76,45 @@ A Pencil frame that accurately represents the code component — ready for visua
 
 Keep Pencil variables and code tokens in sync. After design changes, export variables with `get_variables` and update Swift DesignSystem/ or CSS vars. After code token changes, re-read and update .pen variables.
 
+## Design-Reality Verification (after code generation)
+
+After generating code, offer to verify the output matches the design:
+
+**For web/Tauri projects (Impeccable available):**
+
+Check if Impeccable is installed (look for `.claude/skills/impeccable/`). If available:
+
+```
+"Code generated. Want me to run Impeccable's quality check?
+This will scan the generated code for design anti-patterns."
+```
+
+If approved:
+1. Run `npx impeccable --json {generated-file}` for deterministic anti-pattern detection
+2. If the app is running in a browser: suggest `npx impeccable live` for visual overlay inspection, or the Chrome Extension for one-click checking
+3. Report findings and offer to fix issues in the design or code
+
+**For SwiftUI projects (XcodeBuildMCP available):**
+
+Check if XcodeBuildMCP tools are available. If so:
+
+```
+"Code generated. Want me to build and screenshot in the simulator
+to compare with the Pencil design?"
+```
+
+If approved:
+1. Build the project via XcodeBuildMCP
+2. Take simulator screenshot
+3. Compare side-by-side with the Pencil `get_screenshot` of the original design
+4. Flag visual differences: spacing, colors, typography, alignment
+
+**When neither is available:** Skip verification. The generated code stands on its own.
+
 ## Memory Integration
 
 Store established token mappings in MEMORY.md. Note owner's framework preference in BOND.md.
 
 ## After the Session
 
-Log: which screens/components were translated, any mapping decisions, framework preferences confirmed.
+Log: which screens/components were translated, any mapping decisions, framework preferences confirmed. If verification ran, log findings and whether design or code was adjusted.

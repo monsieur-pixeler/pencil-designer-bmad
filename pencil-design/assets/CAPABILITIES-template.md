@@ -25,6 +25,7 @@
 | [AN] | animate | Specify animations and transitions — auto-detects framework (SwiftUI or Framer Motion) from BOND.md | `references/animate.md` |
 | [RE] | reverse-engineer | Reverse-engineer any existing app or website into a full Pencil design system — guided capture, analysis, and pixel-perfect rebuild | `references/reverse-engineer.md` |
 | [QB] | quick-bootstrap | Full pipeline bootstrap — from nothing or brownfield to all screens on canvas in 5 minutes, orchestrating available agents | `references/quick-bootstrap.md` |
+| [SN] | script-nodes | Generate programmable Pencil script nodes — charts, gauges, progress rings, sparklines, data visualizations | `references/script-nodes.md` |
 
 ### Legacy Aliases (still work, redirect to merged capabilities)
 
@@ -58,7 +59,7 @@ Discover → Foundation → Map → Create → Refine → Validate → Deliver
 | **Discover** | Understanding what exists | `[RE]` reverse-engineer, `[ID]` import-design |
 | **Foundation** | Setting up the design system | `[DS]` design-system-setup |
 | **Map** | Planning the whole app | `[MAP]` app-map |
-| **Create** | Building screens | `[DP]` design, `[PW]` wireframe→visual, `[WS]` from WDS specs, `[MV]` marketing |
+| **Create** | Building screens | `[DP]` design, `[PW]` wireframe→visual, `[WS]` from WDS specs, `[MV]` marketing, `[SN]` script nodes |
 | **Refine** | Variants and animations | `[TV]` themes, `[MP]` multi-platform, `[AN]` animate |
 | **Validate** | Quality checks | `[AC]` accessibility, `[AA]` audit, `[DD]` diff, `[CH]` component harvest |
 | **Deliver** | Handoff to development | `[GC]` code generation, `[DH]` handoff + docs |
@@ -76,6 +77,8 @@ Discover → Foundation → Map → Create → Refine → Validate → Deliver
 | Reverse-engineering an existing app | `[RE]` reverse-engineer |
 | Analyzing an existing .pen file | `[ID]` import-design |
 | Design is a mess — need cleanup | `[ID]` analyse → `[MAP]` reorganize → `[AA]` audit |
+| Need a chart, gauge, or data visualization | `[SN]` script-nodes |
+| Check design quality against principles | `[AA]` audit (loads `references/design-knowledge.md` automatically) |
 | Checking token drift | `[SH]` design-system-health |
 | Exporting for developers | `[DH]` design-handoff |
 
